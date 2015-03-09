@@ -10,6 +10,7 @@ import com.codepath.oauth.OAuthLoginActionBarActivity;
 
 //Where the user will sign in
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
+    private TwitterClient client;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
         //Tell it where to go on success authenticated (got access_token)
          Intent i = new Intent(this, TimelineActivity.class);
          startActivity(i);
+
 
 	}
 

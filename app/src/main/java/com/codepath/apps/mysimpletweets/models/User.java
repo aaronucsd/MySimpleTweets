@@ -3,6 +3,8 @@ package com.codepath.apps.mysimpletweets.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by long on 3/8/15.
  */
@@ -16,7 +18,8 @@ import org.json.JSONObject;
       "profile_image_url": "http://a0.twimg.com/profile_images/730275945/oauth-dancer_normal.jpg",
       },
 * */
-public class User {
+public class User  implements Serializable {
+    private static final long serialVersionUID = -2893089570992474768L;
     // list the attributes
     private String name;
     private long uid;

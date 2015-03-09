@@ -54,31 +54,42 @@ Consumer Secret (API Secret)	jvIYSA3cnKUaSH7CfNcBrvUPuMpw8wT4zpuTjiNdbsLlCQwv3N
     // GET statuses/home_timeline.json
     // count=25
     // since_id=1 (every tweets since first one = all since beginning - good for paging)
-    public void getHomeTimeLine(AsyncHttpResponseHandler handler){
+    public void getHomeTimeLine(AsyncHttpResponseHandler handler, int count, long max_id){
         String apiUrl = getApiUrl("statuses/home_timeline.json");
         // Specify the params to pass in the request
         RequestParams params = new RequestParams();
         //params.put("format", "json");
-        params.put("count", 25);
+        if(max_id > 0)
+            params.put("max_id", max_id);
+        params.put("count", count);
         params.put("since_id", 1);
         // Execute the request
         getClient().get(apiUrl, params, handler);// like $.get() in jquery
     }
 
     // Compose a tweet
-    //1. FIRST ENDPOINT: HomeTimeLine - Gets us the home timeline
-    // GET statuses/home_timeline.json
-    // count=25
-    // since_id=1 (every tweets since first one = all since beginning - good for paging)
-    public void postTweet(AsyncHttpResponseHandler handler){
-        String apiUrl = getApiUrl("statuses/home_timeline.json");
+    //2. SECOND ENDPOINT: POST statuses/update - tweeting
+    //https://dev.twitter.com/rest/reference/post/statuses/update
+    // POST statuses/update.json
+    // status=Maybe%20he%27ll%20finally%20find%20his%20keys.%20%23peterfalk
+    public void postTweet(AsyncHttpResponseHandler handler, String msg){
+        String apiUrl = getApiUrl("statuses/update.json");
         // Specify the params to pass in the request
         RequestParams params = new RequestParams();
         //params.put("format", "json");
-        params.put("count", 25);
-        params.put("since_id", 1);
+        params.put("status", msg);
         // Execute the request
-        getClient().post(apiUrl, params, handler);// like $.get() in jquery
+        getClient().post(apiUrl, params, handler);// like $.post() in jquery
+    }
+
+    // Compose a tweet
+    // 3. THIRD ENDPOINT: Verify User
+    // https://dev.twitter.com/rest/reference/get/account/verify_credentials
+    // GET account/verify_credentials
+    public void verifyUser(AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        // Execute the request
+        getClient().get(apiUrl, handler);// like $.get() in jquery
     }
 
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint

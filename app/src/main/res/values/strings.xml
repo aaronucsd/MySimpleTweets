@@ -2,9 +2,10 @@
 <resources>
 
     <string name="app_name">SimpleTweets</string>
-    <string name="action_settings">Sittings</string>
+    <string name="action_settings">Compose Tweet</string>
     <string name="title_activity_timeline">Twitter Timeline</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_compose_tweet">Compose Tweet</string>
 
 </resources>

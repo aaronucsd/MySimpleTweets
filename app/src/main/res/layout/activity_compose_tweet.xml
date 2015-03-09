@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context="com.codepath.apps.restclienttemplate.ComposeTweetActivity">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Cancel"
+        android:id="@+id/btnCancel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="Tweet"
+        android:id="@+id/btnTweet"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#ff0d6aff"
+        android:textColor="#ffffffff" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivProfileImage"
+        android:layout_below="@+id/btnCancel"
+        android:layout_margin="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ff4eddff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Billy"
+        android:layout_margin="5dp"
+        android:id="@+id/tvUserName"
+        android:layout_below="@+id/btnCancel"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@+id/ivProfileImage" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etMsg"
+        android:layout_below="@+id/ivProfileImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="What&apos;s happening?" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:layout_margin="5dp"
+        android:id="@+id/tvName"
+        android:layout_below="@+id/tvUserName"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@+id/ivProfileImage" />
+
+</RelativeLayout>
