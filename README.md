@@ -24,6 +24,6 @@ Quick manual notes of app usage:
 
 Animated gif walkthrough of this demo todo list app:
 
-![Video Walkthrough](MySimpleTweets_week3.gif)
+![Video Walkthrough](MySimpleTweets2_week3.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
