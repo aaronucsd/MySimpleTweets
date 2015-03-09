@@ -40,10 +40,10 @@ import java.util.ArrayList;
 // Parse (Deserialize and turn into POJO) the json + store the data, and encapsulate state of the logic or display logic
  public class Tweet {
     // list out the attributes
-    private String body;
-    private long uid;//unique id for each tweet - DB's id
-    private User user;
-    private String createAt;
+    public String body;
+    public long uid;//unique id for each tweet - DB's id
+    public User user;
+    public String createAt;
 
 
     public String getBody() {

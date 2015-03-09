@@ -22,7 +22,6 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -68,30 +67,33 @@ public class ComposeTweetActivity extends ActionBarActivity {
 
         //on Tweet clicked
         Button b = (Button) findViewById(R.id.btnTweet);
+        // Set the result
+        final Intent res = new Intent();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 client.postTweet(new JsonHttpResponseHandler(){
                     // SUCCESS
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONArray json) {//root is JSONARRAY not JSONObJECT
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject json) {//root is JSONObJECT
                         Log.d("DEBUG", json.toString());
-
+                        res.putExtra("jsonResult", json.toString());
+                        setResult(RESULT_OK, res);//RESULT_OK=200
+                        // Dismiss
+                        finish();
                     }
 
                     // FAILURE
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        Log.d("DEBUG", errorResponse.toString());
+                        Log.d("DEBUG", statusCode+"");
+                        setResult(RESULT_CANCELED, res);
+                        // Dismiss
+                        finish();
                     }
                 }, etMsg.getText().toString());
 
-                // Set the result
-                Intent res = new Intent();
-                //res.putExtra("user", user);//etAge.getText().toString());
-                setResult(RESULT_OK, res);//RESULT_OK=200
-                // Dismiss
-                finish();
+
             }
         });
 

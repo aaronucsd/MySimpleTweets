@@ -19,6 +19,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -165,14 +166,21 @@ public class TimelineActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if( requestCode == FORM_REQUEST_CODE ){
             if (resultCode == RESULT_OK){
-                aTweets.clear();//clear listview first
                //refresh timeline
-               populateTimeline(0);
+               //populateTimeline(0);
+                JSONObject json;
+                try {
+                    json = new JSONObject(data.getStringExtra("jsonResult"));
+                    Tweet tweet = Tweet.fromJSON(json);
+                    aTweets.insert(tweet, 0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }
     }
