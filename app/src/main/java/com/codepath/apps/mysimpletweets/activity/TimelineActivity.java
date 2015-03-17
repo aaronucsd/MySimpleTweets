@@ -18,15 +18,12 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.TwitterApplication;
 import com.codepath.apps.mysimpletweets.TwitterClient;
-import com.codepath.apps.mysimpletweets.fragments.AFragment;
 import com.codepath.apps.mysimpletweets.fragments.HomeTimelineFragment;
 import com.codepath.apps.mysimpletweets.fragments.MentionsTimelineFragment;
-import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TimelineActivity extends ActionBarActivity {
@@ -34,9 +31,6 @@ public class TimelineActivity extends ActionBarActivity {
     private User user;
     private TwitterClient client;
 
-    FragmentPagerAdapter adapterViewPager;
-    AFragment fragmentA;
-    AFragment fragmentB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,14 +142,15 @@ public class TimelineActivity extends ActionBarActivity {
         if( requestCode == FORM_REQUEST_CODE ){
             if (resultCode == RESULT_OK){
                 JSONObject json;
-                try {
-                    json = new JSONObject(data.getStringExtra("jsonResult"));
-                    Tweet tweet = Tweet.fromJSON(json);
+                //try {
+                    //json = new JSONObject(data.getStringExtra("jsonResult"));
+                    //Tweet tweet = Tweet.fromJSON(json);
                     //fragmentTweetsList.insert(tweet, 0);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                //} catch (JSONException e) {
+                //    e.printStackTrace();
+                //}
+                ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
+                vpPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), user));
             }
         }
     }
