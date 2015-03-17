@@ -18,7 +18,6 @@ public abstract class EndlessScrollListener implements AbsListView.OnScrollListe
     // Sets the starting page index
     private int startingPageIndex = 0;
 
-    private int rsz = 8;
 
     public EndlessScrollListener() {
     }

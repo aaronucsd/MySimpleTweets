@@ -25,6 +25,40 @@ public class User  implements Serializable {
     private long uid;
     private String screenName;
     private String profileImageUrl;
+    private int tweetsCount;
+    private String tagline;
+    private int followersCount;
+    private String profileBackgroundImageUrl;
+    private String profileBackgroundColor;
+    private int followingCount;
+
+    public int getTweetsCount() {
+        return tweetsCount;
+    }
+
+    public String getTagline() {
+        return tagline;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getProfileBackgroundImageUrl() {
+        return profileBackgroundImageUrl;
+    }
+
+    public String getProfileBackgroundColor() {
+        return profileBackgroundColor;
+    }
+
+    public int getFollowersCount() {
+        return followersCount;
+    }
+
+    public int getFollowingCount() {
+        return followingCount;
+    }
 
     public String getName() {
         return name;
@@ -52,6 +86,13 @@ public class User  implements Serializable {
             user.uid = json.getLong("id");
             user.screenName = json.getString("screen_name");
             user.profileImageUrl = json.getString("profile_image_url");
+            user.tagline = json.getString("description");
+            user.followersCount = json.getInt("followers_count");
+            user.followingCount = json.getInt("friends_count");
+            user.profileBackgroundImageUrl = json.getString("profile_background_image_url");
+            user.profileBackgroundColor = json.getString("profile_background_color");
+            user.tweetsCount = json.getInt("statuses_count");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.mysimpletweets.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -124,7 +124,7 @@ public class ComposeTweetActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_compose) {
             return true;
         }
 

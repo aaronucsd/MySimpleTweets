@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.scribe.builder.api.Api;
@@ -65,6 +66,29 @@ Consumer Secret (API Secret)	jvIYSA3cnKUaSH7CfNcBrvUPuMpw8wT4zpuTjiNdbsLlCQwv3N
         params.put("since_id", 1);
         // Execute the request
         getClient().get(apiUrl, params, handler);// like $.get() in jquery
+    }
+
+    public void getMentionsTimeline(JsonHttpResponseHandler handler, int count, long max_id) {
+        String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("count", count);
+        params.put("since_id", 1);
+        if (max_id > 0){
+            params.put("max_id", max_id);
+        }
+        getClient().get(apiUrl,params, handler);
+    }
+
+    public void getUserTimeline(JsonHttpResponseHandler handler, String screenName, int count, long max_id) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("count", count);
+        params.put("since_id", 1);
+        if (max_id > 0){
+            params.put("max_id", max_id);
+        }
+        params.put("screen_name", screenName);
+        getClient().get(apiUrl,params, handler);
     }
 
     // Compose a tweet

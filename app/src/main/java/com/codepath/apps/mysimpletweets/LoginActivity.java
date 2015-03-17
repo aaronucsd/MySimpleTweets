@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import com.codepath.apps.mysimpletweets.activity.TimelineActivity;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 
 
